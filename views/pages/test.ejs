@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <% include ../partials/head/head %>
+  </head>
+  <body>
+    <h1 id="test">수신 대기</h1>
+    <script src="/socket.io/socket.io.js" charset="utf-8"></script>
+    <script type="text/javascript">
+      var socket = io.connect("http://192.168.0.7:3000");
+      socket.on('testdata',function(strdata){
+        console.log("수신 데이터 : "+strdata);
+        $(document).ready(function(){
+          $("#test").text(strdata);
+        })
+      })
+    </script>
+    <%include ../partials/body/include %>
+  </body>
+</html>
